@@ -197,7 +197,7 @@ public class Playground {
 
     }
 
-    public static void readDataFromExcelAndCreateExcelForJPAData(String fileName){
+    public static void readDataFromExcelAndCreate(String fileName){
         try
         {
             FileInputStream file = new FileInputStream(new File(fileName));
@@ -300,6 +300,57 @@ public class Playground {
         {
             e.printStackTrace();
         }
+    }
+
+    public static void modifyTheColumnsValueAndKeepOnlyTheDigitsWithin(int index){
+
+        try
+            {
+                File file = new File("./DateMasinaDetaliu.xlsx");
+
+                FileInputStream fis = new FileInputStream(file);
+                XSSFWorkbook wb = new XSSFWorkbook(fis);
+                XSSFSheet sheet = wb.getSheetAt(0);
+                Iterator<Row> itr = sheet.iterator();
+                DataFormatter formatter = new DataFormatter();
+                //itr.next();
+
+                while (itr.hasNext())
+                {
+                    Row row = itr.next();
+
+                    String value;
+
+                    if(!(formatter.formatCellValue(row.getCell(index)).equals("")))
+                        value = formatter.formatCellValue(row.getCell(index));
+                    else
+                    {
+                        continue;
+                    }
+
+                    char[] year = value.toCharArray();
+                    StringBuilder appender = new StringBuilder();
+
+
+                    for(char c : year){
+                       if(Character.isDigit(c))
+                            appender.append(c);
+                    }
+
+                    if(!appender.toString().isEmpty())
+                        row.getCell(index).setCellValue(Double.valueOf(appender.toString()));
+                }
+
+                FileOutputStream fileOut = new FileOutputStream("./DateMasinaDetaliu.xlsx");
+                wb.write(fileOut);
+                fileOut.close();
+
+            }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 }
