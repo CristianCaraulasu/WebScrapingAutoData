@@ -306,7 +306,7 @@ public class Playground {
 
         try
             {
-                File file = new File("./DateMasinaDetaliu.xlsx");
+                File file = new File("./DateMasinaDetaliu2.xlsx");
 
                 FileInputStream fis = new FileInputStream(file);
                 XSSFWorkbook wb = new XSSFWorkbook(fis);
@@ -341,7 +341,58 @@ public class Playground {
                         row.getCell(index).setCellValue(Double.valueOf(appender.toString()));
                 }
 
-                FileOutputStream fileOut = new FileOutputStream("./DateMasinaDetaliu.xlsx");
+                FileOutputStream fileOut = new FileOutputStream("./DateMasinaDetaliu2.xlsx");
+                wb.write(fileOut);
+                fileOut.close();
+
+            }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
+    }    public static void modifyTheColumnsValueBasedOnSameSpecificCharacter(int index, char character, char character2){
+
+        try
+            {
+                File file = new File("./DateMasinaDetaliu2.xlsx");
+
+                FileInputStream fis = new FileInputStream(file);
+                XSSFWorkbook wb = new XSSFWorkbook(fis);
+                XSSFSheet sheet = wb.getSheetAt(0);
+                Iterator<Row> itr = sheet.iterator();
+                DataFormatter formatter = new DataFormatter();
+                //itr.next();
+
+                while (itr.hasNext())
+                {
+                    Row row = itr.next();
+
+                    String value;
+
+                    if(!(formatter.formatCellValue(row.getCell(index)).equals("")))
+                        value = formatter.formatCellValue(row.getCell(index));
+                    else
+                    {
+                        continue;
+                    }
+
+                    char[] year = value.toCharArray();
+                    StringBuilder appender = new StringBuilder();
+
+
+                    for(char c : year){
+                       if(!(c == character) && !(c == character2))
+                            appender.append(c);
+                       else
+                           break;
+                    }
+
+                    if(!appender.toString().isEmpty())
+                        row.getCell(index).setCellValue(appender.toString());
+                }
+
+                FileOutputStream fileOut = new FileOutputStream("./DateMasinaDetaliu2.xlsx");
                 wb.write(fileOut);
                 fileOut.close();
 

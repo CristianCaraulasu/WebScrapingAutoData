@@ -7,7 +7,8 @@ public class Main {
 
         //Playground.readDataAndMapBrands("https://www.auto-data.net/ro/");
         //Playground.readDataFromExcelAndCreate("C:\\Users\\Crixus\\Desktop\\test2.xlsx");
-        Playground.modifyTheColumnsValueAndKeepOnlyTheDigitsWithin(20);
+        Playground.modifyTheColumnsValueAndKeepOnlyTheDigitsWithin(27);
+//        Playground.modifyTheColumnsValueBasedOnSameSpecificCharacter(27,' ','-');
 
     }
 }
