@@ -7,7 +7,6 @@
         <artifactId>WebScraping</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-    <groupId>org.CristianCaraulasu</groupId>
     <artifactId>DB</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>DB</name>
@@ -21,13 +20,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>3.0.0</version>
+            <version>2.6.4</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>3.0.0</version>
+            <version>2.6.4</version>
             <scope>test</scope>
         </dependency>
 
