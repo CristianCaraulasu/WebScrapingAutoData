@@ -2,16 +2,15 @@ package com.example.db.model;
 
 import lombok.NonNull;
 
+import javax.persistence.EmbeddedId;
+import javax.persistence.Entity;
+
+@Entity
 public class CarModel {
 
-    @NonNull
-    private String brand;
-    @NonNull
-    private String model;
-    @NonNull
-    private String generation;
-    @NonNull
-    private String engineType;
+    @EmbeddedId
+    private CarIdentification carIdentification;
+
     @NonNull
     private Integer productionYear;
 
@@ -45,6 +44,24 @@ public class CarModel {
 
     private String engineAspiration;
 
+    private Integer weight;
 
+    private Integer trunkVolume;
+
+    private Integer fuelVolume;
+
+    private Integer length;
+
+    private Integer width;
+
+    private Integer height;
+
+    private String numberOfManualGears;
+
+    private String numberOfAutomatedGears;
+
+    private TractionType tractionType;
+
+    private String tyreDimension;
 
 }
