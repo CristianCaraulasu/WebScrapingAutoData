@@ -1,12 +1,12 @@
 package com.example.db.model;
 
-import lombok.NonNull;
+import lombok.*;
 
-import javax.persistence.Embeddable;
-import java.io.Serializable;
-
-@Embeddable
-public class CarIdentification implements Serializable {
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Builder
+@Getter
+public class CarIdentification {
 
     @NonNull
     private String brand;
