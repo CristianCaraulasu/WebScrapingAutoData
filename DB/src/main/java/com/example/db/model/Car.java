@@ -1,10 +1,12 @@
 package com.example.db.model;
 
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.NonNull;
 
 @Entity
 @IdClass(CarIdentification.class)
+@Builder
 public class Car {
 
     @Id
